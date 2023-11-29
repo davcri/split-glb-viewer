@@ -1,5 +1,8 @@
 # Split model viewer
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6a9dfe7f-9676-4ac4-a844-dd161e3f9b21/deploy-status)](https://app.netlify.com/sites/glb-split-viewer/deploys)
+
+https://glb-split-viewer.netlify.app/
 
 ## TODO
 
