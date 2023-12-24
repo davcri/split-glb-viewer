@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { textLead } from "./DragNDropArea.style";
+import { textLead } from "../../style/theme";
 import { showError } from "../../utils/showError";
 import { useAppStore } from "../../store/app.store";
 

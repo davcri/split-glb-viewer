@@ -21,6 +21,8 @@ Nice to have:
 
 - [ ] configurable horizontal split range
 - [ ] UI to drag n drop models
+- [ ] Show objects with 2 different cameras (so that they are synced and they are 100% visible at
+      all times)
 - [ ] button: swap left/right models
 
 ## Setup and run
@@ -32,3 +34,14 @@ corepack enable
 yarn # should use yarn version specified in package.json
 yarn dev
 ```
+
+## License
+
+MIT
+
+## Credits
+
+- Helmet model: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/DamagedHelmet
+- Don McCurdy:
+  - https://gltf.report/
+  - https://gltf-transform.dev/

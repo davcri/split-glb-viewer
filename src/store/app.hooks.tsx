@@ -11,12 +11,3 @@ export function useNoModelLoaded() {
   const rightModelSet = useAppStore((s) => s.modelRight) !== undefined;
   return !leftModelSet && !rightModelSet;
 }
-
-export function loadDemoModels() {
-  const model1 = "/DamagedHelmet.glb";
-  const model2 = "/DamagedHelmet@128px_draco_compressed.glb";
-  useAppStore.setState({
-    modelLeft: model1,
-    modelRight: model2,
-  });
-}

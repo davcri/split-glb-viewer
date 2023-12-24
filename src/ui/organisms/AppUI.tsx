@@ -1,24 +1,25 @@
-import { useNoModelLoaded } from "../../store/app.hooks";
 import { UISeparator } from "../atoms/UISeparator";
 import { DragNDropArea } from "../molecules/DragNDropArea";
-import { loadItemList } from "../molecules/DragNDropArea.logic";
-import { LoadDemoModelsButton } from "./LoadDemoModelsButton";
+import { loadModelsFromDroppedItems } from "../../store/app.actions";
+import { ButtonsPanel } from "../molecules/ButtonsPanel";
+import { HelpText } from "../atoms/HelpText";
 
 export function AppUI() {
-  const noneLoaded = useNoModelLoaded();
-
   return (
     <>
       <DragNDropArea
         onLeftDropped={(data) => {
-          loadItemList(data, "left");
+          loadModelsFromDroppedItems(data, "left");
         }}
         onRightDropped={(data) => {
-          loadItemList(data, "right");
+          loadModelsFromDroppedItems(data, "right");
         }}
       />
-      {noneLoaded && <LoadDemoModelsButton />}
       <UISeparator />;
+      <ButtonsPanel />
+      <div className="fixed bottom-4 left-4 max-w-lg">
+        <HelpText />
+      </div>
     </>
   );
 }

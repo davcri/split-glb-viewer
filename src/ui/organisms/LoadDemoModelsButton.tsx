@@ -1,14 +1,14 @@
-import { loadDemoModels } from "../../store/app.hooks";
+import { loadDemoModels } from "../../store/app.actions";
+import { Button } from "../atoms/Button";
 
 export function LoadDemoModelsButton() {
   return (
-    <button
-      className="fixed bottom-6 right-2 p-2 bg-gray-800 text-white rounded-md pointer-events-auto hover:pointer"
+    <Button
       onClick={() => {
         loadDemoModels();
       }}
     >
       Load demo models
-    </button>
+    </Button>
   );
 }
