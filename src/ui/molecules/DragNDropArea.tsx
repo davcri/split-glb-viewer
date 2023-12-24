@@ -1,19 +1,16 @@
 import { useEffect } from "react";
 import { textLead } from "./DragNDropArea.style";
 import { showError } from "../../utils/showError";
-import { loadItemList } from "./DragNDropArea.logic";
 import { useAppStore } from "../../store/app.store";
 
 type DragNDropAreaProps = {
-  onLeftDropped: (ev: DragEvent) => void;
-  onRightDropped: (ev: DragEvent) => void;
+  onLeftDropped: (ev: DataTransferItemList) => void;
+  onRightDropped: (ev: DataTransferItemList) => void;
 };
 
 export function DragNDropArea({ onLeftDropped, onRightDropped }: DragNDropAreaProps) {
   const leftModelSet = useAppStore((s) => s.modelLeft) !== undefined;
-  console.log("🚀 ~ leftModelSet:", leftModelSet);
   const rightModelSet = useAppStore((s) => s.modelRight) !== undefined;
-  console.log("🚀 ~ rightModelSet:", rightModelSet);
 
   useEffect(() => {
     const onDragOver = (event: DragEvent) => {
@@ -25,10 +22,12 @@ export function DragNDropArea({ onLeftDropped, onRightDropped }: DragNDropAreaPr
 
     const onDrop = (event: DragEvent) => {
       event.preventDefault();
-      // if (event.dataTransfer.types[0] === "text/plain") return; // Outliner drop
+
       if (event.dataTransfer?.items) {
         const side = event.clientX < window.innerWidth / 2 ? "left" : "right";
-        loadItemList(event.dataTransfer.items, side);
+
+        if (side === "left") onLeftDropped(event.dataTransfer.items);
+        else onRightDropped(event.dataTransfer.items);
       } else {
         showError("DataTransfer.items is not supported"); // https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/dataTransfer#browser_compatibility
       }

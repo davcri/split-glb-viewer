@@ -6,15 +6,29 @@ https://glb-split-viewer.netlify.app/
 
 ## TODO
 
+High priority:
+
+- [x] Button to quickly preview helmet assets
+- [ ] environment tweaks (env preset, lights tweaking, tonemapping, camera fov, ...)
+- [ ] filename text
+- [ ] warn if filename for 2 glbs is equal
+- [ ] anti aliasing?
+- [ ] model stats (vertices, file weight, texture sizes, materials, ...)
 - [ ] camera fit on model load
+- [ ] camera stats
+
+Nice to have:
+
 - [ ] configurable horizontal split range
-- [ ] swap left/right models
 - [ ] UI to drag n drop models
-- [ ] UI to preview GLB data
+- [ ] button: swap left/right models
 
 ## Setup and run
 
-```console
-yarn
+```sh
+# make sure to have corepack enabled
+corepack enable
+
+yarn # should use yarn version specified in package.json
 yarn dev
 ```
