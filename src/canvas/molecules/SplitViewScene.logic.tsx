@@ -14,8 +14,12 @@ export function useUniforms() {
   }, []);
 
   useEffect(() => {
-    if (leftRT && uniforms.map && rightRT && uniforms.map2) {
+    if (!uniforms.map || !uniforms.map2) throw new Error("uniforms.map is null");
+
+    if (leftRT) {
       uniforms.map.value = leftRT.texture;
+    }
+    if (rightRT) {
       uniforms.map2.value = rightRT.texture;
     }
   }, [leftRT, rightRT, uniforms]);

@@ -7,8 +7,8 @@ import { fullscreenVert, fragmentShader } from "./SplitViewScene.shaders";
 import { useUniforms } from "./SplitViewScene.logic";
 
 type SplitModelViewProps = {
-  modelLeft: string;
-  modelRight: string;
+  modelLeft?: string;
+  modelRight?: string;
 };
 
 export function SplitViewScene({ modelLeft, modelRight }: SplitModelViewProps) {
@@ -37,18 +37,23 @@ export function SplitViewScene({ modelLeft, modelRight }: SplitModelViewProps) {
       {createPortal(
         <>
           <Suspense fallback={null}>
-            <ModelRenderTarget
-              model={modelLeft}
-              renderTargetAttach={(rt) => {
-                setLeftRT(rt);
-              }}
-            />
-            <ModelRenderTarget
-              model={modelRight}
-              renderTargetAttach={(rt) => {
-                setRightRT(rt);
-              }}
-            />
+            {modelLeft && (
+              <ModelRenderTarget
+                model={modelLeft}
+                renderTargetAttach={(rt) => {
+                  setLeftRT(rt);
+                }}
+              />
+            )}
+
+            {modelRight && (
+              <ModelRenderTarget
+                model={modelRight}
+                renderTargetAttach={(rt) => {
+                  setRightRT(rt);
+                }}
+              />
+            )}
           </Suspense>
         </>,
         vScene
